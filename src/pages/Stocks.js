@@ -47,7 +47,7 @@ const Stocks = () => {
 
   useEffect(() => {
     if (location.state?.id) refetch();
-  }, []);
+  }, [location.state?.id, refetch]);
 
   return (
     <Box>

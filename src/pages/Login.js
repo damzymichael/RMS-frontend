@@ -76,7 +76,7 @@ const Login = () => {
           <MyLink to="/">
             <Button variant="outlined">
               <i className="fa-solid fa-arrow-left"></i>
-              <span>Home</span>
+              <span>Back</span>
             </Button>
           </MyLink>
 

@@ -85,7 +85,7 @@ const StockDetails = () => {
       {data && (
         <Box>
           <Stack direction={{xs: 'column', sm: 'row'}} sx={stockDetails}>
-            {image ? <img /> : <Skeleton variant="rectangular" sx={skeleton} />}
+            {image ? <img alt=""/> : <Skeleton variant="rectangular" sx={skeleton} />}
             <Stack gap={1}>
               <Typography variant="h4">{data.title}</Typography>
               <Typography variant="h4">N{data.price}</Typography>
