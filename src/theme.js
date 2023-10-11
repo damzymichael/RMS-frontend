@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import {createTheme} from '@mui/material';
 
 export const theme = createTheme({
   breakpoints: {
@@ -9,43 +9,43 @@ export const theme = createTheme({
       md: 900,
       md_1: 1000,
       lg: 1200,
-      xl: 1536,
-    },
+      xl: 1536
+    }
   },
   palette: {
     primary: {
-      main: "#EA7C69",
-      light: "#e98f7f",
-      dark: "#e45941",
+      main: '#EA7C69',
+      light: '#e98f7f',
+      dark: '#e45941'
     },
     secondary: {
-      main: "#9288e0",
+      main: '#9288e0'
     },
     background: {
-      default: "#252836",
-      paper: "#1F1D2B",
+      default: '#252836',
+      paper: '#1F1D2B'
     },
     text: {
-      primary: "#fff",
-      secondary: "#fff",
-    },
+      primary: '#fff',
+      secondary: '#fff'
+    }
   },
   typography: {
-    fontFamily: "Raleway",
+    fontFamily: 'Raleway',
     button: {
       textTransform: 'none'
     }
   },
   shape: {
-    borderRadius: 10,
+    borderRadius: 10
   },
   components: {
     MuiTypography: {
       styleOverrides: {
         root: {
-          color: " #fff",
-        },
-      },
-    },
-  },
+          color: ' #fff'
+        }
+      }
+    }
+  }
 });

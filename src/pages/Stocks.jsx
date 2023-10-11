@@ -1,36 +1,36 @@
-import { useEffect, useState } from "react";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { useLogout } from "../hooks/useLogout";
-import { useQuery } from "@tanstack/react-query";
-import { fetchStocks } from "../utilis/StockFunctions";
-import { useLocation } from "react-router-dom";
-import { useFlash } from "../hooks/useFlash";
-import { MyLink } from "../hooks/useStyles";
-import { CircularProgress } from "@mui/material";
-import { Button, Box, Grid, Typography } from "@mui/material";
-import { Snackbar, Alert, Modal, Paper } from "@mui/material";
-import StockForm from "../components/StockForm";
+import {useEffect, useState} from 'react';
+import {useAuthContext} from '../hooks/useAuthContext';
+import {useLogout} from '../hooks/useLogout';
+import {useQuery} from '@tanstack/react-query';
+import {fetchStocks} from '../utilis/StockFunctions';
+import {useLocation} from 'react-router-dom';
+import {useFlash} from '../hooks/useFlash';
+import {MyLink} from '../hooks/useStyles';
+import {CircularProgress} from '@mui/material';
+import {Button, Box, Grid, Typography} from '@mui/material';
+import {Snackbar, Alert, Modal, Paper} from '@mui/material';
+import StockForm from '../components/StockForm';
 
 const Stocks = () => {
   const location = useLocation();
-  const { user } = useAuthContext();
-  const { logout } = useLogout();
-  const { showMessage, flashMessage } = useFlash();
+  const {user} = useAuthContext();
+  const {logout} = useLogout();
+  const {showMessage, flashMessage} = useFlash();
   const [error, setError] = useState(null);
   const [showStockForm, setShowStockForm] = useState(false);
   const toggleStockForm = () => setShowStockForm(!showStockForm);
   const linkStyle = {
-    display: "block",
-    margin: "0 auto",
+    display: 'block',
+    margin: '0 auto',
     width: {
-      xs: "90%",
-      sm: "100%",
-    },
+      xs: '90%',
+      sm: '100%'
+    }
   };
   const stocksQuery = useQuery({
-    queryKey: ["stocks"],
+    queryKey: ['stocks'],
     queryFn: () => fetchStocks(user.token),
-    onError: (error) => {
+    onError: error => {
       if (error.response?.data?.error) {
         setError(error.response.data.error);
         flashMessage(3000);
@@ -41,9 +41,9 @@ const Stocks = () => {
       }
     },
     staleTime: 1000 * 60 * 1,
-    refetchInterval: 120000,
+    refetchInterval: 120000
   });
-  const { isLoading, data, refetch } = stocksQuery;
+  const {isLoading, data, refetch} = stocksQuery;
 
   useEffect(() => {
     if (location.state?.id) refetch();
@@ -51,38 +51,38 @@ const Stocks = () => {
 
   return (
     <Box>
-      <Typography variant="h4" align="center" sx={{ mt: "20px", mb: "40px" }}>
+      <Typography variant='h4' align='center' sx={{mt: '20px', mb: '40px'}}>
         Stocks
       </Typography>
 
       {isLoading && (
         <CircularProgress
           size={100}
-          sx={{ display: "block", margin: "5rem auto" }}
+          sx={{display: 'block', margin: '5rem auto'}}
         />
       )}
 
       <Snackbar
         open={showMessage}
         autoHideDuration={4000}
-        anchorOrigin={{ horizontal: "center", vertical: "top" }}
+        anchorOrigin={{horizontal: 'center', vertical: 'top'}}
       >
-        <Alert severity="error">{error}</Alert>
+        <Alert severity='error'>{error}</Alert>
       </Snackbar>
 
       {data?.stocks && (
         <Box>
           <Grid container spacing={2}>
-            {data.stocks.map((stock) => (
+            {data.stocks.map(stock => (
               <Grid item xl={3} md={3} sm={6} xs={12} key={stock._id}>
                 <MyLink
                   to={`/stockDetails/${stock._id}`}
                   sx={linkStyle}
-                  state={{ stock }}
+                  state={{stock}}
                 >
                   {/* Reduce padding when more content is added */}
-                  <Paper elevation={10} sx={{ paddingBlock: "20px" }}>
-                    <Typography variant="h5" fontWeight="light" align="center">
+                  <Paper elevation={10} sx={{paddingBlock: '20px'}}>
+                    <Typography variant='h5' fontWeight='light' align='center'>
                       {stock.title}
                     </Typography>
                   </Paper>
@@ -92,9 +92,9 @@ const Stocks = () => {
           </Grid>
 
           <Button
-            variant="contained"
+            variant='contained'
             onClick={toggleStockForm}
-            sx={{ display: "block", margin: "50px auto 30px" }}
+            sx={{display: 'block', margin: '50px auto 30px'}}
           >
             Add New Stock
           </Button>

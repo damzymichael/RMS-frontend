@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Button, Typography, Box, Modal } from "@mui/material";
+import {useState} from 'react';
+import {Button, Typography, Box, Modal} from '@mui/material';
 // import { useAuthContext } from "../hooks/useAuthContext";
-import Register from "../components/Register";
+import Register from '../components/Register';
 
 const Users = () => {
   // const { user } = useAuthContext();
@@ -10,10 +10,10 @@ const Users = () => {
 
   return (
     <Box>
-      <Typography variant="h2" gutterBottom>
+      <Typography variant='h2' gutterBottom>
         Users
       </Typography>
-      <Button variant="outlined" color="primary" onClick={toggleRegister}>
+      <Button variant='outlined' color='primary' onClick={toggleRegister}>
         Add New User
       </Button>
       <Modal open={showRegister} onClose={toggleRegister}>
